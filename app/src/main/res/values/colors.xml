@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="error">#ba1a1a</color>
+    <color name="secondary2">#FFACAC</color>
+    <color name="tertiary">#FFBFA9</color>
+    <color name="secondary">#FFEBB4</color>
+    <color name="primary">#FBFFB1</color>
 </resources>
