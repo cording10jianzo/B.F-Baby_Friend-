@@ -10,10 +10,10 @@ class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAda
 
     init{
         fragments.add(
-            MainTabs(MainFragment(), "Main Page")
+            MainTabs(MainFragment(), "Contact")
         )
         fragments.add(
-            MainTabs(DetailFragment(), "Detail Page")
+            MainTabs(MyPageFragment(), "My Page")
         )
     }
 
