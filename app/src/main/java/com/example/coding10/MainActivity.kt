@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
     fun initView() = with(binding){
-        mainToolBar.title = "Baby Friends"
+
         mainViewPager.adapter = viewPagerAdapter
 
         TabLayoutMediator(mainTabLayout, mainViewPager){ tab, position ->
