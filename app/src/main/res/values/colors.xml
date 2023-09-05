@@ -9,4 +9,7 @@
     <color name="primary">#FBFFB1</color>
     <color name="gray">#E1DCDC</color>
     <color name="gingray">#727272</color>
+    <color name="brown">#401E00</color>
+    <color name="brown2">#E2612E00</color>
+    <color name="alpha">#22FFACAC</color>
 </resources>

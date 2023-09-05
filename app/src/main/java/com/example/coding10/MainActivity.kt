@@ -2,6 +2,7 @@ package com.example.coding10
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
 import com.example.coding10.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -37,6 +38,16 @@ class MainActivity : AppCompatActivity() {
             tab.setIcon(viewPagerAdapter.getIcon(position))
         }.attach()
 
+        mainFab.setOnClickListener {
+            val builder = AlertDialog.Builder(this@MainActivity)
+
+            val v1 = layoutInflater.inflate(R.layout.dialog_layout,null)
+            builder.setView(v1)
+
+            builder.setNegativeButton("취소", null)
+
+            builder.show()
+        }
 
     }
 }
