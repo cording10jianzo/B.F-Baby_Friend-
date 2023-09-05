@@ -22,7 +22,18 @@ class MyPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
+        val testList = arrayListOf<MyPageItems>()
+        for (i in 1 .. 20) {
+            testList.add(
+                MyPageItems(
+                    "TEST DETAIL PAGE ITEM : $i"
+                )
+            )
+        }
     }
 
-    private fun initView() = with(binding){}
+
+    private fun initView() = with(binding){
+    }
 }

@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/my_page_top_layout"
+        android:id="@+id/detail_page_top_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/my_page_top_vector"
+            android:id="@+id/detail_page_top_vector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/vector"
@@ -24,19 +24,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/my_page_top_menu"
+            android:id="@+id/detail_page_top_bell"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/menu"
+            android:src="@drawable/bell"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/my_page_top_text"
+            android:id="@+id/detail_page_top_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font2"
-            android:text="B.F(Baby_Friend)"
+            android:text="B.F Contacts"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,31 +45,30 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ScrollView
-        android:id="@+id/my_page_scroll"
+        android:id="@+id/detail_page_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
         android:background="@color/text_bg">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/my_page_main_layout"
+            android:id="@+id/detail_page_main_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/my_page_main_image"
+                android:id="@+id/detail_page_main_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/baby8"
+                android:src="@drawable/baby7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/my_page_main_layout" />
+                app:layout_constraintTop_toTopOf="@id/detail_page_main_layout" />
 
             <TextView
-                android:id="@+id/my_page_main_text"
+                android:id="@+id/detail_page_main_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/text_back_ground"
@@ -79,38 +78,54 @@
                 android:text="NAME : 벤틀리 / AGE : 3"
                 android:textColor="#3C1800"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/my_page_main_image"
+                app:layout_constraintBottom_toBottomOf="@+id/detail_page_main_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/my_page_text_layout"
+                android:id="@+id/detail_page_text_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_main_image">
+                app:layout_constraintTop_toBottomOf="@id/detail_page_main_image">
 
                 <TextView
-                    android:id="@+id/my_page_button"
-                    android:layout_width="300dp"
+                    android:id="@+id/detail_page_button_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:gravity="center"
+                    android:padding="13dp"
+                    android:text="CALL"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_button_message"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_page_button_message"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/text_button_bg"
                     android:fontFamily="@font/font2"
                     android:gravity="center"
                     android:padding="13dp"
-                    android:text="Modification"
-                    android:layout_marginTop="5dp"
+                    android:text="MESSAGE"
                     android:textColor="@color/brown"
                     android:textSize="19sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/detail_page_text_blood"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_button_call"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/my_page_text_blood" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <TextView
-                    android:id="@+id/my_page_text_blood"
+                    android:id="@+id/detail_page_text_blood"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/text_bg"
@@ -122,11 +137,11 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_button"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_button_call"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <TextView
-                    android:id="@+id/my_page_text_blood2"
+                    android:id="@+id/detail_page_text_blood2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#FBFFB1"
@@ -138,7 +153,7 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_blood"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_blood"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <ImageView
@@ -146,12 +161,12 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="30dp"
                     android:src="@drawable/blood"
-                    app:layout_constraintBottom_toBottomOf="@id/my_page_text_blood2"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_blood2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_page_text_blood" />
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_blood" />
 
                 <TextView
-                    android:id="@+id/my_page_text_number"
+                    android:id="@+id/detail_page_text_number"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/text_bg"
@@ -162,11 +177,11 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_blood2"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_blood2"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <TextView
-                    android:id="@+id/my_page_text_number2"
+                    android:id="@+id/detail_page_text_number2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#FBFFB1"
@@ -178,7 +193,7 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_number"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_number"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <ImageView
@@ -186,12 +201,12 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="30dp"
                     android:src="@drawable/phone"
-                    app:layout_constraintBottom_toBottomOf="@id/my_page_text_number2"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_number2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_page_text_number" />
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_number" />
 
                 <TextView
-                    android:id="@+id/my_page_text_email"
+                    android:id="@+id/detail_page_text_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/text_bg"
@@ -202,11 +217,11 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_number2"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_number2"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <TextView
-                    android:id="@+id/my_page_text_email2"
+                    android:id="@+id/detail_page_text_email2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#FBFFB1"
@@ -218,7 +233,7 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_email"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_email"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <ImageView
@@ -226,12 +241,12 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="30dp"
                     android:src="@drawable/email"
-                    app:layout_constraintBottom_toBottomOf="@id/my_page_text_email2"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_email2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_page_text_email" />
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_email" />
 
                 <TextView
-                    android:id="@+id/my_page_text_memo"
+                    android:id="@+id/detail_page_text_memo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/text_bg"
@@ -242,11 +257,11 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_email2"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_email2"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <TextView
-                    android:id="@+id/my_page_text_memo2"
+                    android:id="@+id/detail_page_text_memo2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#FBFFB1"
@@ -258,7 +273,7 @@
                     android:textSize="19sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_text_memo"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_memo"
                     tools:layout_editor_absoluteX="10dp" />
 
                 <ImageView
@@ -266,9 +281,9 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="30dp"
                     android:src="@drawable/note"
-                    app:layout_constraintBottom_toBottomOf="@id/my_page_text_memo2"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_memo2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_page_text_memo" />
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_memo" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
