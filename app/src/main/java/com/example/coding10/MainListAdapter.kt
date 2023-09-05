@@ -7,8 +7,12 @@ import com.example.coding10.databinding.ItemMainBinding
 
 class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
 
-    private val list = ArrayList<MainItems>()
+    interface ItemClick{
+        fun onClick(position: Int)
+    }
 
+    var itemClick: ItemClick? = null
+    private val list = ArrayList<MainItems>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             ItemMainBinding.inflate(LayoutInflater.from(parent.context))
@@ -18,6 +22,9 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            itemClick?.onClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -25,8 +32,8 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
     }
 
     class ViewHolder(private val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MainItems) = with(binding) {
-            itemTvTest1.text = item.text
+        fun bind(item: MainItems) {
+            binding.item = item
         }
     }
 
