@@ -1,5 +1,6 @@
 package com.example.coding10
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,16 +29,12 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
 
-        val testList = arrayListOf<MainItems>()
-        for (i in 1 ..20) {
-            testList.add(
-                MainItems(
-                    "${i}st testList"
-                )
-            )
-        }
-        listAdapter.addItems(testList)
+        listAdapter.addItems(dataList)
+        listAdapter.itemClick = object : MainListAdapter.ItemClick{
+            override fun onClick(position: Int) {
 
+            }
+        }
     }
 
     private fun initView() = with(binding) {
