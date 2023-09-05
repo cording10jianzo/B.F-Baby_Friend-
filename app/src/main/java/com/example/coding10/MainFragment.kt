@@ -37,6 +37,7 @@ class MainFragment : Fragment() {
             )
         }
         listAdapter.addItems(testList)
+
     }
 
     private fun initView() = with(binding) {
