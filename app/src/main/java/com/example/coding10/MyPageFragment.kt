@@ -5,21 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.coding10.databinding.FragmentDetailBinding
+import com.example.coding10.databinding.FragmentMypageBinding
 
-class DetailFragment : Fragment() {
+class MyPageFragment : Fragment() {
 
-    lateinit var binding: FragmentDetailBinding
+    lateinit var binding: FragmentMypageBinding
 
     private val listAdapter by lazy {
-        DetailListAdapter()
+        MyPageListAdapter()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentMypageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,10 +27,10 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
 
-        val testList = arrayListOf<DetailItems>()
+        val testList = arrayListOf<MyPageItems>()
         for (i in 1 .. 20) {
             testList.add(
-                DetailItems(
+                MyPageItems(
                     "TEST DETAIL PAGE ITEM : $i"
                 )
             )
@@ -40,6 +40,6 @@ class DetailFragment : Fragment() {
 
 
     private fun initView() = with(binding){
-        detailRecyclerview.adapter = listAdapter
+        mypageRecyclerview.adapter = listAdapter
     }
 }

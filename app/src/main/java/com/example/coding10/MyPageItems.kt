@@ -1,5 +1,5 @@
 package com.example.coding10
 
-data class DetailItems(
+data class MyPageItems(
     val text: String,
 )
