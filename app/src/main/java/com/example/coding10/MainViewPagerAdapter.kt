@@ -10,15 +10,19 @@ class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAda
 
     init{
         fragments.add(
-            MainTabs(MainFragment(), "Contact")
+            MainTabs(MainFragment(), "Contact", R.drawable.children)
         )
         fragments.add(
-            MainTabs(MyPageFragment(), "My Page")
+            MainTabs(MyPageFragment(), "My Page", R.drawable.teddy_bear)
         )
     }
 
     fun getTitle(position: Int): String{
         return fragments[position].titleRes
+    }
+
+    fun getIcon(position: Int): Int{
+        return fragments[position].iconRes
     }
 
     override fun getItemCount(): Int {

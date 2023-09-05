@@ -11,10 +11,6 @@ class MyPageFragment : Fragment() {
 
     lateinit var binding: FragmentMypageBinding
 
-    private val listAdapter by lazy {
-        MyPageListAdapter()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,20 +22,7 @@ class MyPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
-        val testList = arrayListOf<MyPageItems>()
-        for (i in 1 .. 20) {
-            testList.add(
-                MyPageItems(
-                    "TEST DETAIL PAGE ITEM : $i"
-                )
-            )
-        }
-        listAdapter.addItems(testList)
     }
 
-
-    private fun initView() = with(binding){
-        mypageRecyclerview.adapter = listAdapter
-    }
+    private fun initView() = with(binding){}
 }
