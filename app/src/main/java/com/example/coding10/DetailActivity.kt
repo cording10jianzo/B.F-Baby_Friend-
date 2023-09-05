@@ -25,11 +25,11 @@ class DetailActivity : BaseActivity() {
 
         showtoast("상세페이지로 이동합니다.")
 
-        binding.detailPageButtonCall.setOnClickListener{
-            val editNumber =
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(telNumber))
-            startActivity(intent)
-            }
+//        binding.detailPageButtonCall.setOnClickListener{
+//            val editNumber =
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(telNumber))
+//            startActivity(intent)
+//            }
 
         binding.detailPageTopBell.setOnClickListener {
             notification()

@@ -11,10 +11,6 @@ class MyPageFragment : Fragment() {
 
     lateinit var binding: FragmentMypageBinding
 
-    private val listAdapter by lazy {
-        MyPageListAdapter()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,11 +31,9 @@ class MyPageFragment : Fragment() {
                 )
             )
         }
-        listAdapter.addItems(testList)
     }
 
 
     private fun initView() = with(binding){
-        mypageRecyclerview.adapter = listAdapter
     }
 }
