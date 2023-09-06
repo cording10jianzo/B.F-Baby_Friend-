@@ -67,20 +67,66 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/detail_page_main_layout" />
 
-            <TextView
-                android:id="@+id/detail_page_main_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/text_back_ground"
-                android:fontFamily="@font/font2"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="NAME : 벤틀리 / AGE : 3"
-                android:textColor="#3C1800"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/detail_page_main_image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/detail_page_main_image">
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="NAME"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_name2"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="벤틀리"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_age"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_name" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="AGE"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_age2"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_name2" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_age2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="3"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_age" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/detail_page_text_layout"
