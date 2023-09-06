@@ -1,11 +1,13 @@
 package com.example.coding10
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.ItemMainBinding
 
-class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
+class MainListAdapter(val context: Context) : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
 
     interface ItemClick{
         fun onClick(position: Int)
@@ -23,7 +25,9 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
         val item = list[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            itemClick?.onClick(position)
+            val intent = Intent(context,DetailActivity::class.java)
+            intent.putExtra("DATA",item)
+            context.startActivity(intent)
         }
     }
 

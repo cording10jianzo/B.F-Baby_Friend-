@@ -11,7 +11,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
-
     private val viewPagerAdapter by lazy {
         MainViewPagerAdapter(this@MainActivity)
     }
