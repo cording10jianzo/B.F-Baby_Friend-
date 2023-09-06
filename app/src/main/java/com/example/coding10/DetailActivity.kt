@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.res.ResourcesCompat
 import com.example.coding10.databinding.ActivityDetailBinding
 
 class DetailActivity : BaseActivity() {
@@ -25,11 +26,35 @@ class DetailActivity : BaseActivity() {
 
         showtoast("상세페이지로 이동합니다.")
 
-//        binding.detailPageButtonCall.setOnClickListener{
-//            val editNumber =
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(telNumber))
-//            startActivity(intent)
-//            }
+        val data = intent.getParcelableExtra<MainItems>("DATA")
+        binding.detailPageMainImage.setImageURI(data?.aIcon2)
+        binding.detailPageMainTextName2.text = data?.aName
+        binding.detailPageMainTextAge2.text = data?.aAge
+        binding.detailPageTextBlood2.text = data?.aBloodType
+        binding.detailPageTextNumber2.text = data?.aNumber
+        binding.detailPageTextEmail2.text = data?.aEmail
+        binding.detailPageTextMemo2.text = data?.aMemo
+
+        binding.detailPageButtonCall.setOnClickListener {
+            val input = binding.detailPageTextNumber2.text.toString()
+            val myUri = Uri.parse("tel:${input}")
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
+        }
+
+        binding.detailPageButtonMessage.setOnClickListener {
+            val input = binding.detailPageTextNumber2.text.toString()
+            val message = "- 이 문자는 Baby Friend에서 보내는 문자입니다.-\n 안녕하세요. 저랑 친하게 지내요 >.<"
+            val sendmessage = Intent(Intent.ACTION_SENDTO)
+            sendmessage.data = Uri.parse("smsto:$input")
+            sendmessage.putExtra("B.F\n", message)
+            startActivity(sendmessage)
+        }
+
+        binding.detailPageTopVector.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.detailPageTopBell.setOnClickListener {
             notification()

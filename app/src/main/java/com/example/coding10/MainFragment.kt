@@ -51,5 +51,4 @@ class MainFragment : Fragment() {
     private fun initView() = with(binding) {
         mainRecyclerview.adapter = listAdapter
     }
-
 }
