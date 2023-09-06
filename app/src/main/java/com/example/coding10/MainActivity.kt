@@ -40,16 +40,12 @@ class MainActivity : AppCompatActivity() {
         }.attach()
 
         mainFab.setOnClickListener {
-            val builder = AlertDialog.Builder(this@MainActivity)
 
-            val v1 = layoutInflater.inflate(R.layout.dialog_layout,null)
-            builder.setView(v1)
+            CustomDialog(onSave = {item: MainItems ->
+                dataList.add(item)
+            }).show(supportFragmentManager,"")
 
-//            val dialog = CustomDialog(this@MainActivity)
-//            dialog.show()
-//            CustomDialog().show(supportFragmentManager,"")
 
-            builder.show()
         }
 
 
