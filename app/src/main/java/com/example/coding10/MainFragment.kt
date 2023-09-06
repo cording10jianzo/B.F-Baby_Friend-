@@ -15,7 +15,9 @@ class MainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
 
     private val listAdapter by lazy {
-        MainListAdapter()
+        //리스트 어뎁터를 만들때 컨텍스트 넘기기
+        //인텐트 때문에 컨텍스트 넘김
+        MainListAdapter(requireContext())
     }
 
     override fun onCreateView(
