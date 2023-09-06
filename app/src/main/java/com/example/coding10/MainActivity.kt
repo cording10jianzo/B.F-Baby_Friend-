@@ -1,5 +1,6 @@
 package com.example.coding10
 
+import CustomDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -9,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+
 
     private val viewPagerAdapter by lazy {
         MainViewPagerAdapter(this@MainActivity)
@@ -44,10 +46,13 @@ class MainActivity : AppCompatActivity() {
             val v1 = layoutInflater.inflate(R.layout.dialog_layout,null)
             builder.setView(v1)
 
-            builder.setNegativeButton("취소", null)
+//            val dialog = CustomDialog(this@MainActivity)
+//            dialog.show()
+//            CustomDialog().show(supportFragmentManager,"")
 
             builder.show()
         }
+
 
     }
 }
