@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.coding10.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -33,10 +35,19 @@ class MainFragment : Fragment() {
         listAdapter.itemClick = object : MainListAdapter.ItemClick{
             override fun onClick(position: Int) {
 
+                val i = Intent(activity, DetailActivity::class.java).apply {
+                    putExtra("DATA", dataList[position])
+                }
+                startActivity(i)
             }
         }
     }
+    val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == AppCompatActivity.RESULT_OK) {
 
+            }
+        }
     private fun initView() = with(binding) {
         mainRecyclerview.adapter = listAdapter
     }
