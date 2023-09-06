@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.ItemMainBinding
 
-class MainListAdapter(val context: Context) : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
+class MainListAdapter() : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
 
     interface ItemClick{
         fun onClick(position: Int)
@@ -25,9 +25,7 @@ class MainListAdapter(val context: Context) : RecyclerView.Adapter<MainListAdapt
         val item = list[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra("DATA",item)
-            context.startActivity(intent)
+            itemClick?.onClick(position)
         }
     }
 
