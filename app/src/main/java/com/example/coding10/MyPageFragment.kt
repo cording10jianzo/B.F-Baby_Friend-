@@ -23,17 +23,19 @@ class MyPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
 
-        val testList = arrayListOf<MyPageItems>()
-        for (i in 1 .. 20) {
-            testList.add(
-                MyPageItems(
-                    "TEST DETAIL PAGE ITEM : $i"
-                )
-            )
+        binding.myPageButton.setOnClickListener {
+            // 수정하기 -> 수정완료로  textChange
+            //
+            if(binding.myPageButton.text == "수정하기"){
+                binding.myPageButton.text = "수정완료"
+            }else{
+                binding.myPageButton.text = "수정하기"
+            }
         }
     }
 
 
     private fun initView() = with(binding){
+
     }
 }
