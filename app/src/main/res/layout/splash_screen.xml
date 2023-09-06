@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CCEBF681"
+    android:background="@color/primary"
     tools:context=".SplashScreen">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -22,9 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Baby Friends"
-        android:textColor="#FF9800"
+        android:textColor="@color/secondary2"
+        android:fontFamily="@font/font2"
         android:textStyle="bold"
-        android:textSize="35sp"
+        android:textSize="45sp"
         android:layout_marginBottom="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
