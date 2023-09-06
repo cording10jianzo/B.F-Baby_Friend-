@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -15,8 +17,6 @@ class MainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
 
     private val listAdapter by lazy {
-        //리스트 어뎁터를 만들때 컨텍스트 넘기기
-        //인텐트 때문에 컨텍스트 넘김
         MainListAdapter()
     }
 
@@ -32,14 +32,15 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
 
-        listAdapter.addItems(dataList)
+        binding.mainRecyclerview.adapter = listAdapter
+        binding.mainRecyclerview.addItemDecoration(StickyHeaderItemDecoration(stickyHeaderInterface))
+        listAdapter.addItems(displayData())
         listAdapter.itemClick = object : MainListAdapter.ItemClick{
             override fun onClick(position: Int) {
 
                 val i = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra("DATA", dataList[position])
+                    putExtra("DATA", dataList[position] as MainItems)
                 }
                 startActivity(i)
             }
@@ -51,7 +52,34 @@ class MainFragment : Fragment() {
 
             }
         }
-    private fun initView() = with(binding) {
-        mainRecyclerview.adapter = listAdapter
+
+    private val stickyHeaderInterface = object :StickyHeaderItemDecoration.StickyHeaderInterface {
+        override fun getHeaderPositionForItem(itemPosition: Int): Int {
+            for(i in itemPosition downTo 0){
+                if (isHeader(i)) {
+                    return i
+                }
+            }
+            return 0
+        }
+
+        override fun getHeaderLayout(headerPosition: Int): Int {
+            return R.layout.item_main_category
+        }
+
+        override fun bindHeaderData(header: View?, headerPosition: Int) {
+            if(headerPosition != RecyclerView.NO_POSITION && isHeader(headerPosition)){
+                header?.findViewById<TextView>(R.id.tvName)
+                    ?.text = ((binding.mainRecyclerview.adapter as MainListAdapter).getItem()[headerPosition] as MainCategory).str
+            }
+        }
+
+        override fun isHeader(itemPosition: Int): Boolean {
+            return if(itemPosition != RecyclerView.NO_POSITION){
+                (binding.mainRecyclerview.adapter as MainListAdapter).getItemViewType(itemPosition) == BFMainListViewType.Category
+            } else {
+                false
+            }
+        }
     }
 }
