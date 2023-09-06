@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.ItemMainBinding
 
-class MainListAdapter() : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
+class MainListAdapter : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
 
     interface ItemClick{
         fun onClick(position: Int)
