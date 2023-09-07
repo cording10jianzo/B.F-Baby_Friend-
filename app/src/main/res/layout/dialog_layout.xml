@@ -3,118 +3,154 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="50dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="580dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <ImageView
+        android:id="@+id/dialog_iv"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/sun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/dialog_iv"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/sun"
-            tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/dialog_name"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/tertiary"
+        android:fontFamily="@font/font2"
+        android:hint="Name"
+        android:inputType="text"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_iv" />
 
-        <EditText
-            android:id="@+id/dialog_name"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:hint="Name"
-            android:textSize="20dp"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_iv" />
+    <EditText
+        android:id="@+id/dialog_number"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/brown2"
+        android:fontFamily="@font/font2"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_name" />
 
-        <EditText
-            android:id="@+id/dialog_number"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:textSize="20dp"
-            android:inputType="phone"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_name" />
+    <EditText
+        android:id="@+id/dialog_email"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/tertiary"
+        android:fontFamily="@font/font2"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_number" />
 
-        <EditText
-            android:id="@+id/dialog_email"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:textSize="20dp"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_number" />
+    <EditText
+        android:id="@+id/dialog_memo"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/brown2"
+        android:fontFamily="@font/font2"
+        android:hint="Memo"
+        android:inputType="text"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_email" />
 
-        <EditText
-            android:id="@+id/dialog_memo"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:hint="Memo"
-            android:textSize="20dp"
-            android:inputType="text"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_email" />
+    <EditText
+        android:id="@+id/dialog_age"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/tertiary"
+        android:fontFamily="@font/font2"
+        android:hint="Age"
+        android:inputType="number"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_memo" />
 
-        <EditText
-            android:id="@+id/dialog_age"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:hint="Age"
-            android:inputType="text"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_memo" />
-        <EditText
-            android:id="@+id/dialog_BloodType"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:hint="BloodType"
-            android:inputType="text"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_age" />
+    <EditText
+        android:id="@+id/dialog_BloodType"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/brown2"
+        android:fontFamily="@font/font2"
+        android:hint="BloodType"
+        android:inputType="text"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_age" />
 
-        <Button
-            android:id="@+id/dialog_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="90dp"
-            android:text="Cancel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_BloodType" />
+    <TextView
+        android:id="@+id/dialog_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/text_button_bg"
+        android:fontFamily="@font/font2"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Cancel"
+        android:textColor="@color/brown"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@id/dialog_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_BloodType" />
 
-        <Button
-            android:id="@+id/dialog_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            app:layout_constraintStart_toEndOf="@+id/dialog_cancel"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_BloodType" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/dialog_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/text_button_bg"
+        android:fontFamily="@font/font2"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Save"
+        android:textColor="@color/brown"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialog_cancel"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_BloodType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
