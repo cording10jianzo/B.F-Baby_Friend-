@@ -3,6 +3,7 @@ package com.example.coding10
 import CustomDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
 import com.example.coding10.databinding.ActivityMainBinding
@@ -20,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        // spinner
+        val spinnerData = arrayOf("List View", "Grid View")
+        val adapter = ArrayAdapter(this, R.layout.spinner_custom_layout, spinnerData)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         binding.mainViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {

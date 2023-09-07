@@ -23,13 +23,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/my_page_top_menu"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/main_page_spinner"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/menu"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/my_page_top_text"
