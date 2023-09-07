@@ -65,7 +65,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return list
     }
 
-    class MainItemViewHolder(private val binding: ItemMainBinding) :
+    class MainItemViewHolder(val binding: ItemMainBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CommonItems) {
             binding.item = item as MainItems
