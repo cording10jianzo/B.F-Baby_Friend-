@@ -52,8 +52,9 @@ class DetailActivity : BaseActivity() {
         }
 
         binding.detailPageTopVector.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+            finish()
         }
 
         binding.detailPageTopBell.setOnClickListener {
@@ -104,8 +105,9 @@ class DetailActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity((intent))
+//        val intent = Intent(this, MainActivity::class.java)
+//        startActivity((intent))
+        finish()
     }
 }
 

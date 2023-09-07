@@ -76,7 +76,7 @@ class CustomDialog(
             } else {
                 Toast.makeText(requireContext(),"회원가입 완료.",Toast.LENGTH_SHORT).show()
 
-                // 입력한 데이터 MainItems에 추가하고 onSave를 통해
+                // 입력한 데이터 MainItems에 추가하고 onSave를 통해 데이터 뿌려주기
                 val contact = MainItems(
                     getUri(R.drawable.baby1), getUri(R.drawable.baby1_2),
                     aName = dialog_name.toString(), aNumber = dialog_number.toString(),

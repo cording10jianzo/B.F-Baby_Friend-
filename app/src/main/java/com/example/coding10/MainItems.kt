@@ -3,7 +3,10 @@ package com.example.coding10
 import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.text.Collator
+import java.util.Locale
 
+open class CommonItems
 @Parcelize
 data class MainItems(
     val aIcon: Uri,
@@ -13,7 +16,11 @@ data class MainItems(
     val aNumber: String,
     val aEmail: String,
     val aBloodType: String,
-    val aMemo: String) : Parcelable
+    val aMemo: String,
+    var category: String = "",
+    var favorite: Boolean = false) : Parcelable, CommonItems()
+
+data class MainCategory(val str: String) : CommonItems()
 
 val dataList = mutableListOf<MainItems>().apply {
     add(MainItems(getUri(R.drawable.baby1),getUri(R.drawable.baby1_2),"올리비아","13개월","010-1621-1422","asjk@naver.com","A형","ㄷ겨쇼ㅜㅈ디ㅑㄷ어"))
@@ -45,3 +52,81 @@ val dataList = mutableListOf<MainItems>().apply {
 }
 
 fun getUri(resid: Int): Uri = Uri.parse("android.resource://" + R::class.java.`package`?.name + "/" + resid)
+
+/**
+ * 소팅을 위해 필요한 첫글자 추출하는 함수
+ */
+fun getSortingKey(str: String): String {
+    val firstChar = str.firstOrNull() ?: return str
+    return when {
+        firstChar.isLetter() && firstChar.isLowerCase() -> firstChar.toString()
+        firstChar.isLetter() && firstChar.isUpperCase() -> firstChar.toString().toLowerCase()
+        firstChar.isDigit() -> firstChar.toString()
+        else -> getChosung(firstChar).toString()
+    }
+}
+
+/**
+ * 초성 추출하는 함수
+ */
+fun getChosung(c: Char): Char {
+    val hanBegin = 0xAC00
+    val hanLast = 0xD7A3
+    val chosungBase = 0x1100
+
+    if (c.toInt() < hanBegin || c.toInt() > hanLast) {
+        return c
+    }
+
+    val hanOffset = c.toInt() - hanBegin
+    val chosungOffset = hanOffset / (21 * 28)
+
+    return (chosungBase + chosungOffset).toChar()
+}
+
+/**
+ * datalist 정렬함수
+ */
+fun sortData(): List<CommonItems> {
+    dataList.forEach {
+        it as MainItems
+        it.category = getSortingKey(it.aName)
+    }
+
+    val collator = Collator.getInstance(Locale.KOREAN)
+
+    return dataList.sortedWith(
+        compareBy(
+            {
+                it as MainItems
+                it.category
+            },
+            {
+                it as MainItems
+                collator.compare(it.aName, it.aName)
+            })
+    )
+}
+
+/**
+ * 소팅한 리스트와 타이틀 및 카테고리 목록을 추가한 실제 화면에 뿌려지는 디스플레이용 리스트
+ */
+fun displayData(): List<CommonItems>  {
+    val sortedList = sortData() //정렬
+    var displayList = mutableListOf<CommonItems>()
+    val (favoriteItems, nonFavoriteItems) = sortedList.partition { (it as MainItems).favorite }
+    displayList.addAll(favoriteItems)
+    var currentCategory = if (nonFavoriteItems.isNotEmpty()) (nonFavoriteItems[0] as MainItems).category else ""
+    displayList.add(MainCategory(currentCategory))
+
+    nonFavoriteItems.forEach {
+        val item = it as MainItems
+        if (item.category != currentCategory) {
+            displayList.add(MainCategory(item.category))
+            currentCategory = item.category
+        }
+        displayList.add(item)
+    }
+
+    return displayList
+}
