@@ -83,6 +83,7 @@ class MyPageFragment : Fragment() {
             binding.myPageCompleteButton.visibility = View.INVISIBLE
             binding.myPageEditButton.visibility = View.VISIBLE
 
+
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

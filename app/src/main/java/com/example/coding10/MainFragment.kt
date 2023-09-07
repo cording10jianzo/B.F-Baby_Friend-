@@ -14,6 +14,7 @@ import com.example.coding10.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
+    private lateinit var displayList: List<CommonItems>
     lateinit var binding: FragmentMainBinding
 
     private val listAdapter by lazy {
@@ -34,12 +35,13 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.mainRecyclerview.adapter = listAdapter
-        listAdapter.addItems(displayData())
+        displayList = displayData()
+        listAdapter.addItems(displayList)
         listAdapter.itemClick = object : MainListAdapter.ItemClick {
             override fun onClick(position: Int) {
 
                 val i = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra("DATA", dataList[position] as MainItems)
+                    putExtra("DATA", displayList[position] as MainItems)
                 }
                 startActivity(i)
             }
