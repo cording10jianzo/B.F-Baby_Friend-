@@ -1,6 +1,11 @@
 import android.app.Dialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
 import android.graphics.drawable.Icon
+import android.os.Build
 import android.os.Bundle
 import android.os.PatternMatcher
 import android.provider.ContactsContract.CommonDataKinds.Email
@@ -10,13 +15,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import com.android.contectapp.Notification
 import com.example.coding10.MainItems
 import com.example.coding10.R
 import com.example.coding10.databinding.ActivityMainBinding
 import com.example.coding10.databinding.DialogLayoutBinding
 import com.example.coding10.getUri
+import java.sql.Time
+import java.text.DateFormat
+import java.util.Calendar
 import java.util.regex.Pattern
 
 
@@ -24,10 +37,15 @@ class CustomDialog(
     //리스트에 추가해 줄 생성자
     val onSave: (item: MainItems) -> Unit
 
+
+
 ) : DialogFragment() {
     //    private val dialog = Dialog(context)
     private lateinit var binding: DialogLayoutBinding
-
+    //notification 알람
+    private val Notification : Notification by lazy {
+        Notification(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +62,22 @@ class CustomDialog(
         var dialog_age = binding.dialogAge
         var dialog_bloodtype = binding.dialogBloodType
 
-//        //다이얼로그 크기조절
-//        dialog?.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-//            WindowManager.LayoutParams.WRAP_CONTENT)
-//
-//        // dialog 바깥쪽 클릭 시 dialog 종료
-//        dialog?.setCancelable(true)
+
+        //Event 시간에 맞춰 Notification 표시
+        binding.dialogNotification1.setOnClickListener {
+
+            val delayMillis = 500 * 600 * 1000L
+            val message = "5분 후 알림"
+            scheduleNotification(delayMillis, message)
+        }
+        binding.dialogNotification2.setOnClickListener {
+
+        }
+
+
+
+
+
 
         // Cancel 버튼
         binding.dialogCancel.setOnClickListener {
@@ -108,6 +136,10 @@ class CustomDialog(
         }
 
         return binding.root
+    } private fun scheduleNotification(delayMillis: Long, message: String) {
+        // 지연 후 알림 생성 및 표시
+        val notificationBuilder = Notification.createNotification("알림이 예약되었습니다", message)
+        Notification.showNotification(1, notificationBuilder)
     }
 }
 
