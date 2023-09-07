@@ -85,6 +85,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun addItems(items: List<CommonItems>) {
+        list.clear()
         list.addAll(items)
         notifyDataSetChanged()
     }

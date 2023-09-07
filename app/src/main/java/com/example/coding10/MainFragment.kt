@@ -76,8 +76,7 @@ class MainFragment : Fragment() {
                     override fun onClick(dialog: DialogInterface?, p1: Int) {
                         when (p1) {
                             DialogInterface.BUTTON_POSITIVE -> {
-//                                (displayList as MutableList).removeAt(position)
-//                                (binding.mainRecyclerview.adapter as MainListAdapter).notifyDataSetChanged()
+                                deleteDataRefrash(position)
                             }
                             DialogInterface.BUTTON_NEGATIVE -> {
 
@@ -91,6 +90,19 @@ class MainFragment : Fragment() {
             }
         }
     }
+
+    private fun deleteDataRefrash(position: Int) {
+        try {
+            val item = (displayList as MutableList)
+            dataList.removeAt((item[position] as MainItems).keyIndex)
+            item.removeAt(position)
+
+            (binding.mainRecyclerview.adapter as MainListAdapter).addItems(displayList)
+        } catch (e:Exception) {
+
+        }
+    }
+
     val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == AppCompatActivity.RESULT_OK) {
