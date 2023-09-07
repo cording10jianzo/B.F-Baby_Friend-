@@ -18,7 +18,8 @@ data class MainItems(
     val aBloodType: String,
     val aMemo: String,
     var category: String = "",
-    var favorite: Boolean = false) : Parcelable, CommonItems()
+    var favorite: Boolean = false,
+    var keyIndex: Int = -1) : Parcelable, CommonItems()
 
 data class MainCategory(val str: String) : CommonItems()
 
@@ -88,9 +89,9 @@ fun getChosung(c: Char): Char {
  * datalist 정렬함수
  */
 fun sortData(): List<CommonItems> {
-    dataList.forEach {
-        it as MainItems
+    dataList.forEachIndexed { index, it ->
         it.category = getSortingKey(it.aName)
+        it.keyIndex = index
     }
 
     val collator = Collator.getInstance(Locale.KOREAN)

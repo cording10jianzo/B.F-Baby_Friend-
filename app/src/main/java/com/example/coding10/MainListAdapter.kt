@@ -11,6 +11,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItemClick {
         fun onClick(position: Int)
+        fun onLongClick(position: Int)
     }
 
     var itemClick: ItemClick? = null
@@ -42,6 +43,10 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.itemView.setOnClickListener {
                     itemClick?.onClick(position)
                 }
+                holder.itemView.setOnLongClickListener {
+                    itemClick?.onLongClick(position)
+                    true
+                }
             }
         }
     }
@@ -65,7 +70,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return list
     }
 
-    class MainItemViewHolder(private val binding: ItemMainBinding) :
+    class MainItemViewHolder(val binding: ItemMainBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CommonItems) {
             binding.item = item as MainItems
@@ -80,6 +85,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun addItems(items: List<CommonItems>) {
+        list.clear()
         list.addAll(items)
         notifyDataSetChanged()
     }
