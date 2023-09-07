@@ -83,8 +83,6 @@ class MyPageFragment : Fragment() {
             binding.myPageCompleteButton.visibility = View.INVISIBLE
             binding.myPageEditButton.visibility = View.VISIBLE
 
-            val message = "수정을 완료했어요 ^_^"
-            (activity as BaseActivity).showtoast(message)
 
         }
     }
