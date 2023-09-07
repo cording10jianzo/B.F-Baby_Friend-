@@ -22,7 +22,7 @@ data class MainItems(
 
 data class MainCategory(val str: String) : CommonItems()
 
-val dataList = mutableListOf<CommonItems>().apply {
+val dataList = mutableListOf<MainItems>().apply {
     add(MainItems(getUri(R.drawable.baby1),getUri(R.drawable.baby1_2),"올리비아","13개월","010-1621-1422","asjk@naver.com","A형","ㄷ겨쇼ㅜㅈ디ㅑㄷ어"))
     add(MainItems(getUri(R.drawable.baby2),getUri(R.drawable.baby2_2),"지우","3살","010-1423-1460","mmk@naver.com","A형","코로나로 힘겨운 요즘인데 평온한 하루 보내시길 바랍니다."))
     add(MainItems(getUri(R.drawable.baby3),getUri(R.drawable.baby3_2),"서연","4살","010-8647-8953","wld@naver.com","B형","사계절의 즐거움으로 가득한 하루 되세요. :)"))
