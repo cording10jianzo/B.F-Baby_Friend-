@@ -1,6 +1,7 @@
 package com.example.coding10
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -14,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -59,6 +63,31 @@ class MainFragment : Fragment() {
                     putExtra("DATA", displayList[position] as MainItems)
                 }
                 startActivity(i)
+            }
+
+            override fun onLongClick(position: Int) {
+                var builder = AlertDialog.Builder(context!!)
+
+                builder.setTitle("연락처 삭제")
+                builder.setMessage("정말로 삭제하시겠습니까?")
+                builder.setIcon(R.drawable.finish)
+
+                val listener = object : DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface?, p1: Int) {
+                        when (p1) {
+                            DialogInterface.BUTTON_POSITIVE -> {
+//                                (displayList as MutableList).removeAt(position)
+//                                (binding.mainRecyclerview.adapter as MainListAdapter).notifyDataSetChanged()
+                            }
+                            DialogInterface.BUTTON_NEGATIVE -> {
+
+                            }
+                        }
+                    }
+                }
+                builder.setPositiveButton("확인", listener)
+                builder.setNegativeButton("취소", listener)
+                builder.show()
             }
         }
     }

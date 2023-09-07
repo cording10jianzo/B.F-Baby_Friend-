@@ -11,6 +11,7 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItemClick {
         fun onClick(position: Int)
+        fun onLongClick(position: Int)
     }
 
     var itemClick: ItemClick? = null
@@ -41,6 +42,10 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 (holder as MainItemViewHolder).bind(item)
                 holder.itemView.setOnClickListener {
                     itemClick?.onClick(position)
+                }
+                holder.itemView.setOnLongClickListener {
+                    itemClick?.onLongClick(position)
+                    true
                 }
             }
         }
