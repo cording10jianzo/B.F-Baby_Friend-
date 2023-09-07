@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_page_top_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/detail_page_top_vector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/detail_page_top_bell"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bell"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detail_page_top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font2"
+            android:text="B.F Contacts"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/detail_page_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="@color/primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detail_page_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/detail_page_main_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baby7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/detail_page_main_layout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/text_back_ground"
+                app:layout_constraintBottom_toBottomOf="@id/detail_page_main_image">
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="NAME"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_name2"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="벤틀리"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_age"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_name" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="AGE"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_main_text_age2"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_name2" />
+
+                <TextView
+                    android:id="@+id/detail_page_main_text_age2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:padding="10dp"
+                    android:text="3"
+                    android:textColor="#3C1800"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_main_text_age" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detail_page_text_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_page_main_image">
+
+                <TextView
+                    android:id="@+id/detail_page_button_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:gravity="center"
+                    android:padding="13dp"
+                    android:text="CALL"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detail_page_button_message"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_page_button_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:gravity="center"
+                    android:padding="13dp"
+                    android:text="MESSAGE"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintBottom_toTopOf="@id/detail_page_text_blood"
+                    app:layout_constraintEnd_toStartOf="@id/detail_page_button_call"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/detail_page_text_blood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:paddingTop="10dp"
+                    android:text="Blood Type"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_button_call"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_blood2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="AB"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_blood"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/blood"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_blood2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_blood" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="NUMBER"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_blood2"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_number2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="010-1234-5678"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_number"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/phone"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_number2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_number" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="EMAIL"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_number2"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_email2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="sajdfik@gmail.com"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_email"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/email"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_email2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_email" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_memo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="MEMO"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_email2"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/detail_page_text_memo2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="나는 벤틀리에용"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_page_text_memo"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/note"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_page_text_memo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detail_page_text_memo" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
