@@ -20,7 +20,6 @@ data class MainItems(
     var category: String = "",
     var favorite: Boolean = false) : Parcelable, CommonItems()
 
-data class MainTitle(val str: String) : CommonItems()
 data class MainCategory(val str: String) : CommonItems()
 
 val dataList = mutableListOf<CommonItems>().apply {
@@ -51,8 +50,6 @@ val dataList = mutableListOf<CommonItems>().apply {
     add(MainItems(getUri(R.drawable.baby25),getUri(R.drawable.baby25),"하나","130일","010-9846-6847","jiaj@naver.com","O형","다 읽으셨다면 좋아요 꾹~!"))
     add(MainItems(getUri(R.drawable.boy),getUri(R.drawable.boy),"비욘세","130일","010-9846-6847","jiaj@naver.com","O형","다 읽으셨다면 좋아요 꾹~!"))
 }
-
-//val sortList = displayData()
 
 fun getUri(resid: Int): Uri = Uri.parse("android.resource://" + R::class.java.`package`?.name + "/" + resid)
 
@@ -117,12 +114,8 @@ fun sortData(): List<CommonItems> {
 fun displayData(): List<CommonItems>  {
     val sortedList = sortData() //정렬
     var displayList = mutableListOf<CommonItems>()
-
-    displayList.add(MainTitle("즐겨찾기 목록"))
     val (favoriteItems, nonFavoriteItems) = sortedList.partition { (it as MainItems).favorite }
     displayList.addAll(favoriteItems)
-    displayList.add(MainTitle("연락처"))
-
     var currentCategory = if (nonFavoriteItems.isNotEmpty()) (nonFavoriteItems[0] as MainItems).category else ""
     displayList.add(MainCategory(currentCategory))
 

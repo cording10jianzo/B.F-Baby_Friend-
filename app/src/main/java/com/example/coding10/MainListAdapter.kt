@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coding10.databinding.ItemMainBinding
 import com.example.coding10.databinding.ItemMainCategoryBinding
-import com.example.coding10.databinding.ItemMainTitleBinding
+
 
 class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    interface ItemClick{
+    interface ItemClick {
         fun onClick(position: Int)
     }
 
@@ -17,11 +17,6 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val list = ArrayList<CommonItems>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            BFMainListViewType.Title -> {
-                MainTitleViewHolder(
-                    ItemMainTitleBinding.inflate(LayoutInflater.from(parent.context))
-                )
-            }
             BFMainListViewType.Category -> {
                 MainCategoryViewHolder(
                     ItemMainCategoryBinding.inflate(LayoutInflater.from(parent.context))
@@ -39,9 +34,6 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val item = list[position]
 
         when (holder) {
-            is MainTitleViewHolder -> {
-                holder.bind(item)
-            }
             is MainCategoryViewHolder -> {
                 holder.bind(item)
             }
@@ -56,9 +48,6 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return when (list[position]) {
-            is MainTitle -> {
-                BFMainListViewType.Title
-            }
             is MainCategory -> {
                 BFMainListViewType.Category
             }
@@ -76,32 +65,27 @@ class MainListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return list
     }
 
-    class MainItemViewHolder(private val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainItemViewHolder(private val binding: ItemMainBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CommonItems) {
             binding.item = item as MainItems
         }
     }
 
-    class MainTitleViewHolder(private val binding: ItemMainTitleBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CommonItems) {
-            binding.item = item as MainTitle
-        }
-    }
-
-    class MainCategoryViewHolder(private val binding: ItemMainCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainCategoryViewHolder(private val binding: ItemMainCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CommonItems) {
             binding.item = item as MainCategory
         }
     }
 
-    fun addItems(items: List<CommonItems>){
+    fun addItems(items: List<CommonItems>) {
         list.addAll(items)
         notifyDataSetChanged()
     }
 }
 
 object BFMainListViewType {
-    const val Title = 0
     const val Category = 1
     const val Item = 2
 }

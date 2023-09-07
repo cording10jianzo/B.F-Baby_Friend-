@@ -34,9 +34,8 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.mainRecyclerview.adapter = listAdapter
-        binding.mainRecyclerview.addItemDecoration(StickyHeaderItemDecoration(stickyHeaderInterface))
         listAdapter.addItems(displayData())
-        listAdapter.itemClick = object : MainListAdapter.ItemClick{
+        listAdapter.itemClick = object : MainListAdapter.ItemClick {
             override fun onClick(position: Int) {
 
                 val i = Intent(activity, DetailActivity::class.java).apply {
@@ -52,34 +51,4 @@ class MainFragment : Fragment() {
 
             }
         }
-
-    private val stickyHeaderInterface = object :StickyHeaderItemDecoration.StickyHeaderInterface {
-        override fun getHeaderPositionForItem(itemPosition: Int): Int {
-            for(i in itemPosition downTo 0){
-                if (isHeader(i)) {
-                    return i
-                }
-            }
-            return 0
-        }
-
-        override fun getHeaderLayout(headerPosition: Int): Int {
-            return R.layout.item_main_category
-        }
-
-        override fun bindHeaderData(header: View?, headerPosition: Int) {
-            if(headerPosition != RecyclerView.NO_POSITION && isHeader(headerPosition)){
-                header?.findViewById<TextView>(R.id.tvName)
-                    ?.text = ((binding.mainRecyclerview.adapter as MainListAdapter).getItem()[headerPosition] as MainCategory).str
-            }
-        }
-
-        override fun isHeader(itemPosition: Int): Boolean {
-            return if(itemPosition != RecyclerView.NO_POSITION){
-                (binding.mainRecyclerview.adapter as MainListAdapter).getItemViewType(itemPosition) == BFMainListViewType.Category
-            } else {
-                false
-            }
-        }
-    }
 }
