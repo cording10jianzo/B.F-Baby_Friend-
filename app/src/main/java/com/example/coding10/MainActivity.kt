@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainPageSpinner.adapter = spinnerAdapter
 
         binding.mainPageSpinner.viewTreeObserver.addOnGlobalLayoutListener {
-            (binding.mainPageSpinner.selectedView as TextView).setTextColor(Color.WHITE)
+            (binding.mainPageSpinner.selectedView as TextView).setTextColor(Color.YELLOW)
             (binding.mainPageSpinner.selectedView as TextView).setBackgroundResource(R.drawable.spinner_custom)
         }
         binding.mainPageSpinner.onItemSelectedListener =
