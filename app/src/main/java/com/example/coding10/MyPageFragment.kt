@@ -81,7 +81,8 @@ class MyPageFragment : Fragment() {
         binding.myPageCompleteButton.setOnClickListener {
 
             if (myPageTvBloodTypeError.visibility == View.INVISIBLE &&
-                myPageTvNumberError.visibility == View.INVISIBLE && myPageTvEmailError.visibility == View.INVISIBLE
+                myPageTvNumberError.visibility == View.INVISIBLE &&
+                myPageTvEmailError.visibility == View.INVISIBLE
             ) {
                 init(2)
                 infoProcess("edit")
