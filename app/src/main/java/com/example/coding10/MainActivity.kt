@@ -2,9 +2,15 @@ package com.example.coding10
 
 import CustomDialog
 import android.animation.ObjectAnimator
+import android.content.DialogInterface
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
 import com.example.coding10.databinding.ActivityMainBinding
@@ -70,6 +76,44 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        mainPageBtnEnd.setOnClickListener {
+
+            val builder = AlertDialog.Builder(this@MainActivity)
+            builder.setTitle("종료")
+            builder.setIcon(R.mipmap.power)
+            builder.setMessage("정말 종료하시겠습니까?")
+            val listener = DialogInterface.OnClickListener { _, i ->
+                if (i == DialogInterface.BUTTON_POSITIVE) {
+                    finish()
+                }
+            }
+            builder.setPositiveButton("확인", listener)
+            builder.setNegativeButton("취소", null)
+            builder.show()
+
+        }
+
+        val itemArray = arrayOf("List View", "Grid View")
+        val spinnerAdapter =
+            ArrayAdapter(this@MainActivity, R.layout.spinner_dropdown_item, itemArray)
+        binding.mainPageSpinner.adapter = spinnerAdapter
+
+        binding.mainPageSpinner.viewTreeObserver.addOnGlobalLayoutListener {
+            (binding.mainPageSpinner.selectedView as TextView).setTextColor(Color.WHITE)
+            (binding.mainPageSpinner.selectedView as TextView).setBackgroundResource(R.drawable.spinner_custom)
+        }
+        binding.mainPageSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+//                    Toast.makeText(this@MainActivity, "position 값 : $position", Toast.LENGTH_SHORT).show()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
     }
 
     //floating Action Button 메뉴 구현

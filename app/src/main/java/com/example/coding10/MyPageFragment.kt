@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.preference.PreferenceManager.OnActivityResultListener
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,9 +35,10 @@ class MyPageFragment : Fragment() {
     }
 
 
-    private fun initView() = with(binding){
+    private fun initView() = with(binding) {
+
         binding.myPageMainImage.setOnClickListener { // 이미지 클릭시
-            if(binding.myPageEditButton.isInvisible){
+            if (binding.myPageEditButton.isInvisible) {
 
                 val intent = Intent()
                 // 기기 기본 갤러리 접근
@@ -51,54 +53,100 @@ class MyPageFragment : Fragment() {
         // 수정하기 버튼을 누른 경우
         binding.myPageEditButton.setOnClickListener {
 
-            binding.myPageEtBlood.isEnabled = true
-            binding.myPageEtEmail.isEnabled = true
-            binding.myPageEtNumber.isEnabled = true
-            binding.myPageEtMemo.isEnabled = true
-            binding.myPageEditButton.visibility = View.INVISIBLE
-            binding.myPageCancelButton.visibility = View.VISIBLE
-            binding.myPageCompleteButton.visibility = View.VISIBLE
+            init(1)
+            infoProcess("edit")
 
         }
         // 취소하기 버튼을 누른 경우
         binding.myPageCancelButton.setOnClickListener {
 
-            binding.myPageEtBlood.isEnabled = false
-            binding.myPageEtEmail.isEnabled = false
-            binding.myPageEtNumber.isEnabled = false
-            binding.myPageEtMemo.isEnabled = false
-            binding.myPageCancelButton.visibility = View.INVISIBLE
-            binding.myPageCompleteButton.visibility = View.INVISIBLE
-            binding.myPageEditButton.visibility = View.VISIBLE
+            init(2)
+            infoProcess("cancel")
 
         }
+
         // 완료하기 버튼을 누른 경우
         binding.myPageCompleteButton.setOnClickListener {
 
-            binding.myPageEtBlood.isEnabled = false
-            binding.myPageEtEmail.isEnabled = false
-            binding.myPageEtNumber.isEnabled = false
-            binding.myPageEtMemo.isEnabled = false
-            binding.myPageCancelButton.visibility = View.INVISIBLE
-            binding.myPageCompleteButton.visibility = View.INVISIBLE
-            binding.myPageEditButton.visibility = View.VISIBLE
-
-
+            init(2)
+            infoProcess("save")
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == 101 && resultCode == RESULT_OK){
-            try{
-                val inputStream : InputStream? = requireContext().contentResolver.openInputStream(data?.data!!)
+        if (requestCode == 101 && resultCode == RESULT_OK) {
+            try {
+                val inputStream: InputStream? =
+                    requireContext().contentResolver.openInputStream(data?.data!!)
                 val bm = BitmapFactory.decodeStream(inputStream)
                 inputStream?.close()
                 binding.myPageMainImage.setImageBitmap(bm)
 
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
+        } else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
             Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun init(switch: Int) = with(binding) {
+
+        when (switch) {
+            1 -> {
+
+                myPageEtBlood.isEnabled = true
+                myPageEtEmail.isEnabled = true
+                myPageEtNumber.isEnabled = true
+                myPageEtMemo.isEnabled = true
+                myPageEditButton.visibility = View.INVISIBLE
+                myPageCancelButton.visibility = View.VISIBLE
+                myPageCompleteButton.visibility = View.VISIBLE
+
+            }
+
+            2 -> {
+
+                myPageEtBlood.isEnabled = false
+                myPageEtEmail.isEnabled = false
+                myPageEtNumber.isEnabled = false
+                myPageEtMemo.isEnabled = false
+                myPageCancelButton.visibility = View.INVISIBLE
+                myPageCompleteButton.visibility = View.INVISIBLE
+                myPageEditButton.visibility = View.VISIBLE
+
+            }
+
+            else -> {
+
+            }
+        }
+    }
+
+    private fun infoProcess(data: String) = with(binding) {
+        var hashMap = HashMap<String, String>()
+        when (data) {
+            "edit" -> {
+                Toast.makeText(context, "${myPageEtBlood.text}", Toast.LENGTH_SHORT).show()
+                hashMap["혈액형"] = myPageEtBlood.text.toString()
+                hashMap["번호"] = myPageEtBlood.text.toString()
+                hashMap["이메일"] = myPageEtBlood.text.toString()
+                hashMap["메모"] = myPageEtBlood.text.toString()
+//                hashMap["혈액형"]?.let { Log.d("test", it) }
+            }
+
+            "cancel" -> {
+                hashMap["혈액형"]?.let { Log.d("test", it) }
+//                Toast.makeText(context, "${hashMap["혈액형"]}", Toast.LENGTH_SHORT).show()
+            }
+
+            "save" -> {
+//                Toast.makeText(context, "저장", Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {
+
+            }
         }
     }
 }
