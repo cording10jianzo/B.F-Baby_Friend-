@@ -4,23 +4,29 @@ import android.app.Activity.RESULT_CANCELED
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.opengl.Visibility
 import android.os.Bundle
 import android.preference.PreferenceManager.OnActivityResultListener
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import com.example.coding10.databinding.FragmentMypageBinding
+import com.google.android.material.snackbar.Snackbar
 import java.io.InputStream
 
 class MyPageFragment : Fragment() {
 
     lateinit var binding: FragmentMypageBinding
-
+    private var hashMap = HashMap<String, String>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +38,12 @@ class MyPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
+        with(binding) {
+            myPageEtBlood.addTextChangedListener(createBloodTypeTextWatcher(myPageEtBlood))
+            myPageEtNumber.addTextChangedListener(createNumberTextWatcher(myPageEtNumber))
+            myPageEtEmail.addTextChangedListener(createMailTextWatcher(myPageEtEmail))
+        }
     }
 
 
@@ -68,8 +80,14 @@ class MyPageFragment : Fragment() {
         // 완료하기 버튼을 누른 경우
         binding.myPageCompleteButton.setOnClickListener {
 
-            init(2)
-            infoProcess("save")
+            if (myPageTvBloodTypeError.visibility == View.INVISIBLE &&
+                myPageTvNumberError.visibility == View.INVISIBLE && myPageTvEmailError.visibility == View.INVISIBLE
+            ) {
+                init(2)
+                infoProcess("edit")
+            } else {
+                Snackbar.make(binding.root, "입력 값을 확인해주세요.", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -86,7 +104,7 @@ class MyPageFragment : Fragment() {
                 e.printStackTrace()
             }
         } else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
-            Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
+
         }
     }
 
@@ -124,28 +142,98 @@ class MyPageFragment : Fragment() {
     }
 
     private fun infoProcess(data: String) = with(binding) {
-        var hashMap = HashMap<String, String>()
+
         when (data) {
             "edit" -> {
-                Toast.makeText(context, "${myPageEtBlood.text}", Toast.LENGTH_SHORT).show()
+
                 hashMap["혈액형"] = myPageEtBlood.text.toString()
-                hashMap["번호"] = myPageEtBlood.text.toString()
-                hashMap["이메일"] = myPageEtBlood.text.toString()
-                hashMap["메모"] = myPageEtBlood.text.toString()
+                hashMap["번호"] = myPageEtNumber.text.toString()
+                hashMap["이메일"] = myPageEtEmail.text.toString()
+                hashMap["메모"] = myPageEtMemo.text.toString()
+
 //                hashMap["혈액형"]?.let { Log.d("test", it) }
             }
 
             "cancel" -> {
-                hashMap["혈액형"]?.let { Log.d("test", it) }
-//                Toast.makeText(context, "${hashMap["혈액형"]}", Toast.LENGTH_SHORT).show()
-            }
 
-            "save" -> {
-//                Toast.makeText(context, "저장", Toast.LENGTH_SHORT).show()
+                myPageEtBlood.text = Editable.Factory.getInstance().newEditable(hashMap["혈액형"])
+                myPageEtNumber.text = Editable.Factory.getInstance().newEditable(hashMap["번호"])
+                myPageEtEmail.text = Editable.Factory.getInstance().newEditable(hashMap["이메일"])
+                myPageEtMemo.text = Editable.Factory.getInstance().newEditable(hashMap["메모"])
+
             }
 
             else -> {
 
+            }
+        }
+    }
+
+    private fun createBloodTypeTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
+                with(binding) {
+
+                    val id = s.toString()
+                    val regexPatternLength = Regex("^.{1,2}\$")
+                    val inputText = Regex("[ABOabo]+")
+
+                    if (id.isNotEmpty() && inputText.matches(id) && regexPatternLength.matches(id)) {
+                        myPageTvBloodTypeError.visibility = View.INVISIBLE
+                    } else {
+                        myPageTvBloodTypeError.visibility = View.VISIBLE
+                    }
+                }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        }
+    }
+
+    private fun createNumberTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
+                with(binding) {
+                    val regexPatternLength = Regex("^.{1,13}\$")
+                    val id = s.toString()
+                    val regexPattern1 = Regex("^\\d{3}-\\d{4}-\\d{4}$")
+                    val regexPattern2 = Regex("^[A-Za-z]")
+                    if (regexPattern1.matches(id) && id.isNotEmpty() && regexPatternLength.matches(id)) {
+                        myPageTvNumberError.visibility = View.INVISIBLE
+                    } else if (regexPatternLength.matches(id)){
+                        myPageTvNumberError.visibility = View.INVISIBLE
+                    } else if (regexPattern2.matches(id)){
+                        myPageTvNumberError.visibility = View.VISIBLE
+                    } else{
+                        myPageTvNumberError.visibility = View.VISIBLE
+                    }
+                }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        }
+    }
+
+    private fun createMailTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
+                with(binding) {
+
+                    val id = s.toString()
+                    val emailRegexPattern = Regex("^[A-Za-z0-9+_.-]{1,25}+@(.+)\$")
+                    val regexPatternLength = Regex("^.{1,13}\$")
+
+                    if (id.isNotEmpty() && emailRegexPattern.matches(id) ) {
+                        myPageTvEmailError.visibility = View.INVISIBLE
+                    } else {
+                        myPageTvEmailError.visibility = View.VISIBLE
+                    }
+                }
+
+            override fun afterTextChanged(s: Editable?) {
             }
         }
     }
