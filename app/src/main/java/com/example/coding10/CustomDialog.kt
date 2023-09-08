@@ -14,6 +14,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.DialogFragment
@@ -39,6 +40,7 @@ class CustomDialog(
     //    private val dialog = Dialog(context)
     private lateinit var binding: DialogLayoutBinding
     private var hashMap = HashMap<String, String>()
+
     //notification 알람
     private val Notification: Notification by lazy {
         Notification(requireContext())
@@ -74,7 +76,12 @@ class CustomDialog(
             val delayMillis: Long = 5000
             val intent = Intent(context, MainActivity::class.java)
             val pendingIntent =
-                PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                PendingIntent.getBroadcast(
+                    context,
+                    0,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
 
             // 5초 후에 알림 생성
             binding.dialogNotification1.postDelayed({
@@ -103,7 +110,12 @@ class CustomDialog(
             val delayMillis: Long = 10000
             val intent = Intent(context, MainActivity::class.java)
             val pendingIntent =
-                PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                PendingIntent.getBroadcast(
+                    context,
+                    0,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
 
             // 10초 후에 알림 생성
             binding.dialogNotification1.postDelayed({
@@ -227,10 +239,9 @@ class CustomDialog(
                     val id = s.toString()
                     val regexPattern1 = Regex("[가-힣]")
 
-                    if (regexPattern1.matches(id) && id.isNotEmpty())
-                     {
+                    if (regexPattern1.matches(id) && id.isNotEmpty()) {
                         dialogNameError.visibility = View.INVISIBLE
-                    }  else {
+                    } else {
                         dialogNameError.visibility = View.VISIBLE
                     }
                 }
@@ -239,19 +250,19 @@ class CustomDialog(
             }
         }
     }
+
     private fun createEmailTextWatcher(editText: EditText): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
                 with(binding) {
                     val id = s.toString()
-                    val regexPattern1 = Regex ("^[a-zA-Z0-9]+@[a-zA-Z0-9]+\$")
+                    val regexPattern1 = Regex("^[a-zA-Z0-9]+@[a-zA-Z0-9]+\$")
 
 
-                    if (regexPattern1.matches(id) && id.isNotEmpty())
-                    {
+                    if (regexPattern1.matches(id) && id.isNotEmpty()) {
                         dialogEmailError.visibility = View.INVISIBLE
-                    }  else {
+                    } else {
                         dialogEmailError.visibility = View.VISIBLE
                     }
                 }
@@ -260,18 +271,18 @@ class CustomDialog(
             }
         }
     }
+
     private fun createphonTextWatcher(editText: EditText): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
                 with(binding) {
                     val id = s.toString()
-                    val regexPattern1 = Regex( "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")
+                    val regexPattern1 = Regex("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")
 
-                    if (regexPattern1.matches(id) && id.isNotEmpty() )
-                    {
+                    if (regexPattern1.matches(id) && id.isNotEmpty()) {
                         dialogPhoneError.visibility = View.INVISIBLE
-                    }  else {
+                    } else {
                         dialogPhoneError.visibility = View.VISIBLE
                     }
                 }
@@ -280,6 +291,7 @@ class CustomDialog(
             }
         }
     }
+
     private fun createAgeTextWatcher(editText: EditText): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -288,10 +300,9 @@ class CustomDialog(
                     val id = s.toString()
                     val regexPattern1 = Regex("\"^[0-7]\$\"")
 
-                    if (regexPattern1.matches(id) && id.isNotEmpty() )
-                    {
+                    if (regexPattern1.matches(id) && id.isNotEmpty()) {
                         dialogAgeError.visibility = View.INVISIBLE
-                    }  else {
+                    } else {
                         dialogAgeError.visibility = View.VISIBLE
                     }
                 }
@@ -300,6 +311,7 @@ class CustomDialog(
             }
         }
     }
+
     private fun createBloodTypeTextWatcher(editText: EditText): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -308,10 +320,9 @@ class CustomDialog(
                     val id = s.toString()
                     val regexPattern1 = Regex("^[A-Za-z]")
 
-                    if (regexPattern1.matches(id) && id.isNotEmpty() )
-                    {
+                    if (regexPattern1.matches(id) && id.isNotEmpty()) {
                         dialogBloodError.visibility = View.INVISIBLE
-                    }  else {
+                    } else {
                         dialogBloodError.visibility = View.VISIBLE
                     }
                 }
@@ -320,6 +331,7 @@ class CustomDialog(
             }
         }
     }
+
     private fun init(switch: Int) = with(binding) {
 
         when (switch) {
@@ -347,6 +359,7 @@ class CustomDialog(
             }
         }
     }
+
     private fun infoProcess(data: String) = with(binding) {
 
         when (data) {
@@ -373,6 +386,12 @@ class CustomDialog(
             else -> {
 
             }
+
+
+
+        }
+
+    }
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "My Channel"
@@ -381,12 +400,10 @@ class CustomDialog(
             val channel = NotificationChannel(channelId, name, importance).apply {
                 description = descriptionText
             }
-            val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
 
         }
     }
 }
-
-
-
