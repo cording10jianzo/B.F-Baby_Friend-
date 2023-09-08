@@ -6,13 +6,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = ArrayList<MainTabs>()
+    val fragments = ArrayList<MainTabs>()
     private var currentSpinnerPosition = 0  //선택된 스피너 저장변수
 
     init{
         fragments.add(
             MainTabs(MainFragment(), "Contact", R.drawable.children)
-//            MainTabs(MainGridFragment(), "Contact", R.drawable.children)
         )
         fragments.add(
             MainTabs(MyPageFragment(), "My Page", R.drawable.teddy_bear)
