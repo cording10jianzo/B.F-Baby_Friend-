@@ -37,6 +37,7 @@ class DetailActivity : BaseActivity() {
         binding.detailPageTextEmail2.text = data?.aEmail
         binding.detailPageTextMemo2.text = data?.aMemo
         binding.detailChLike.isChecked = data?.favorite!!
+        isFavor = data?.favorite!!
 
         //즐찾 클릭이벤트
         binding.detailChLike.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -63,19 +64,22 @@ class DetailActivity : BaseActivity() {
         }
 
         binding.detailPageTopVector.setOnClickListener {
-            var position: Int = -1
-            position = intent.getIntExtra("POS", -1)
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("POS", position)
-                putExtra("ISFAVOR", isFavor)
-            }
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+            actionFinish()
         }
 
         binding.detailPageTopBell.setOnClickListener {
             notification()
         }
+    }
+    private fun actionFinish(){
+        var position: Int = -1
+        position = intent.getIntExtra("POS", -1)
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra("POS", position)
+            putExtra("ISFAVOR", isFavor)
+        }
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     fun notification() {
@@ -122,6 +126,7 @@ class DetailActivity : BaseActivity() {
 
     override fun onBackPressed() {
         finish()
+        actionFinish()
     }
 }
 
