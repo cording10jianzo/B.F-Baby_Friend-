@@ -91,14 +91,15 @@
 
             </LinearLayout>
 
-            <CheckBox
+            <ImageView
                 android:id="@+id/ch_like"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginEnd="40dp"
                 android:visibility="visible"
                 android:button="@null"
-                android:background="@drawable/checked_like"
+                android:background="@drawable/selected_like"
+                selected="@{item.favorite}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

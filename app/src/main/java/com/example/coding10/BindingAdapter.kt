@@ -8,3 +8,8 @@ import androidx.databinding.BindingAdapter
 fun imgRes(imageView: ImageView, uri:Uri) {
     imageView.setImageURI(uri)
 }
+
+@BindingAdapter("selected")
+fun selected(imageView: ImageView, isFavor: Boolean) {
+    imageView.isSelected = isFavor
+}
