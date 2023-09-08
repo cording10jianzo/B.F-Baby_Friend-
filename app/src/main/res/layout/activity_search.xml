@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="70dp">
+
+    <ImageView
+        android:id="@+id/fab_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/babyfind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/fab_text_find"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/font2"
+        android:text="친구 찾기"
+        android:textColor="@color/brown"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fab_iv" />
+
+    <TextView
+        android:id="@+id/fab_text_find2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/font2"
+        android:text="찾고 싶은 친구를 검색해 주세요."
+        android:textColor="@color/brown"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_text_find" />
+
+
+    <EditText
+        android:id="@+id/fab_name"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/tertiary"
+        android:fontFamily="@font/font2"
+        android:hint="Name"
+        android:inputType="text"
+        android:textColor="@color/brown"
+        android:textColorHighlight="@color/secondary"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_text_find2" />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/font2"
+        android:textColor="@color/brown"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fab_name" />
+
+    <TextView
+        android:id="@+id/fab_find_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/text_button_bg"
+        android:fontFamily="@font/font2"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="FIND"
+        android:textColor="@color/brown"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view" />
+
+
+    <TextView
+        android:id="@+id/fab_back_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_button_bg"
+        android:fontFamily="@font/font2"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="BACK"
+        android:textColor="@color/brown"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_find_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

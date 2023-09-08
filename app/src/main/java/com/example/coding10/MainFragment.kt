@@ -36,12 +36,9 @@ class MainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMainBinding.inflate(inflater, container, false)
-
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE), REQUEST_PHONE_CALL)
         }
-
-
         return binding.root
     }
 
@@ -58,20 +55,17 @@ class MainFragment : Fragment() {
         listAdapter.addItems(displayList)
         listAdapter.itemClick = object : MainListAdapter.ItemClick {
             override fun onClick(position: Int) {
-
                 val i = Intent(activity, DetailActivity::class.java).apply {
                     putExtra("DATA", displayList[position] as MainItems)
+                    putExtra("POS", position)
                 }
-                startActivity(i)
+                resultLauncher.launch(i)
             }
-
             override fun onLongClick(position: Int) {
                 var builder = AlertDialog.Builder(context!!)
-
                 builder.setTitle("연락처 삭제")
                 builder.setMessage("정말로 삭제하시겠습니까?")
                 builder.setIcon(R.drawable.finish)
-
                 val listener = object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface?, p1: Int) {
                         when (p1) {
@@ -79,7 +73,6 @@ class MainFragment : Fragment() {
                                 deleteDataRefrash(position)
                             }
                             DialogInterface.BUTTON_NEGATIVE -> {
-
                             }
                         }
                     }
@@ -90,30 +83,40 @@ class MainFragment : Fragment() {
             }
         }
     }
-
     private fun deleteDataRefrash(position: Int) {
         try {
             val item = (displayList as MutableList)
             dataList.removeAt((item[position] as MainItems).keyIndex)
             item.removeAt(position)
-
             (binding.mainRecyclerview.adapter as MainListAdapter).addItems(displayList)
         } catch (e:Exception) {
-
         }
     }
-
+    private fun updateFavoritRefrash(position: Int, isFavor: Boolean) {
+        try {
+            val item = (displayList as MutableList)
+            val originPos = (item[position] as MainItems).keyIndex
+            dataList[originPos].favorite = isFavor
+            (item[position] as MainItems).favorite = isFavor
+            (binding.mainRecyclerview.adapter as MainListAdapter).addItems(displayList)
+        } catch (e:Exception) {
+        }
+    }
     val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == AppCompatActivity.RESULT_OK) {
-
+                    val intent = it.data
+                    val pos = intent?.getIntExtra("POS", -1)
+                    val isFavor = intent?.getBooleanExtra("ISFAVOR", false)
+                    //가져온 포지션의 데이타 즐겨찾기 수정
+                if(pos != null && isFavor != null) {
+                    updateFavoritRefrash(pos, isFavor)
+                }
             }
         }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_PHONE_CALL) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
             } else {
                 Toast.makeText(context, "권한이 거부되었습니다.", Toast.LENGTH_SHORT).show()
             }
