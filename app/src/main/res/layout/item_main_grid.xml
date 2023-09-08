@@ -62,13 +62,14 @@
 
                 <TextView
                     android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/font2"
                     android:maxLines="2"
                     android:padding="1dp"
                     android:text="@{item.AName}"
+                    android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
@@ -80,7 +81,7 @@
                     android:padding="1dp"
                     android:text="@{item.ANumber}"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

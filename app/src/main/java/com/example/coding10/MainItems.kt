@@ -89,6 +89,7 @@ fun getChosung(c: Char): Char {
  * datalist 정렬함수
  */
 fun sortData(): List<CommonItems> {
+    dataList.sortBy { it.aName }
     dataList.forEachIndexed { index, it ->
         it.category = getSortingKey(it.aName)
         it.keyIndex = index

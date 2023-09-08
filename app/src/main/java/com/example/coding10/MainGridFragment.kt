@@ -120,6 +120,13 @@ class MainGridFragment : Fragment() {
         } catch (e:Exception) {
         }
     }
+    fun refreshData() {
+        try {
+            displayList = displayData()
+            (binding.mainRecyclerview.adapter as MainGridListAdapter).addItems(displayList)
+        } catch (e:Exception) {
+        }
+    }
     val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == AppCompatActivity.RESULT_OK) {

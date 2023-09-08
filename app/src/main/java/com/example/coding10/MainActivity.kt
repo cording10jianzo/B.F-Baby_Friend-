@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     private var isFabOpen = false
-
+    private var isFirstSelection = true
     private val viewPagerAdapter by lazy {
         MainViewPagerAdapter(this@MainActivity)
     }
@@ -41,6 +41,15 @@ class MainActivity : AppCompatActivity() {
         binding.fabPlus.setOnClickListener {
             CustomDialog(onSave = { item: MainItems ->
                 dataList.add(item)
+                var adapter = (binding.mainViewPager.adapter as MainViewPagerAdapter)
+                var f1 = adapter.fragments[0]
+                var f2 = f1.fragment
+                if (f2 is MainGridFragment) {
+                    f2.refreshData()
+                }
+                else if(f2 is MainFragment) {
+                    f2.refreshData()
+                }
             }).show(supportFragmentManager, "")
         }
 
@@ -117,8 +126,11 @@ class MainActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-//                    Toast.makeText(this@MainActivity, "position 값 : $position", Toast.LENGTH_SHORT).show()
-                    (binding.mainViewPager.adapter as MainViewPagerAdapter).switchFragment(position)
+                    if (isFirstSelection) {
+                        isFirstSelection = false
+                    } else {
+                        (binding.mainViewPager.adapter as MainViewPagerAdapter).switchFragment(position)
+                    }
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
