@@ -4,16 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
   >
 
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="match_parent">
 
 
 
@@ -80,14 +73,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/font2"
             android:text="2글자 이상의 이름을 입력해주세요."
             android:textColor="@color/tertiary"
             android:textSize="15sp"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/dialog_name"
-            app:layout_constraintTop_toBottomOf="@id/dialog_name" />
+            app:layout_constraintTop_toBottomOf="@id/dialog_notification1" />
 
         <EditText
             android:id="@+id/dialog_number"
@@ -107,18 +100,18 @@
             app:layout_constraintTop_toBottomOf="@+id/dialog_name" />
 
         <TextView
-            android:id="@+id/dialog_phone_error"
+            android:id="@+id/dialog_number_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/font2"
             android:text="@string/my_page_number_type_error"
             android:textColor="@color/tertiary"
             android:textSize="15sp"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/dialog_number"
-            app:layout_constraintTop_toBottomOf="@id/dialog_number" />
+            app:layout_constraintTop_toBottomOf="@id/dialog_name" />
 
         <EditText
             android:id="@+id/dialog_email"
@@ -142,14 +135,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/font2"
             android:text="@string/my_page_email_type_error"
             android:textColor="@color/tertiary"
             android:textSize="15sp"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/dialog_email"
-            app:layout_constraintTop_toBottomOf="@id/dialog_email" />
+            app:layout_constraintTop_toBottomOf="@id/dialog_number" />
 
         <EditText
             android:id="@+id/dialog_memo"
@@ -190,17 +183,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/font2"
             android:text="만 7세 이하만 가입이 가능합니다."
             android:textColor="@color/tertiary"
             android:textSize="15sp"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/dialog_age"
-            app:layout_constraintTop_toBottomOf="@id/dialog_age" />
+            app:layout_constraintTop_toBottomOf="@id/dialog_memo" />
 
         <EditText
-            android:id="@+id/dialog_bloodtype"
+            android:id="@+id/dialog_blood_type"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -221,14 +214,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/font2"
             android:text="@string/my_page_blood_type_error"
             android:textColor="@color/tertiary"
             android:textSize="15sp"
             android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="@id/dialog_bloodtype"
-            app:layout_constraintTop_toBottomOf="@id/dialog_bloodtype" />
+            app:layout_constraintStart_toStartOf="@id/dialog_blood_type"
+            app:layout_constraintTop_toBottomOf="@id/dialog_age" />
 
         <TextView
             android:id="@+id/dialog_cancel"
@@ -244,7 +237,7 @@
             android:textSize="19sp"
             app:layout_constraintEnd_toStartOf="@id/dialog_save"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_bloodtype" />
+            app:layout_constraintTop_toBottomOf="@+id/dialog_blood_type" />
 
         <TextView
             android:id="@+id/dialog_save"
@@ -262,7 +255,6 @@
             android:textSize="19sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dialog_cancel"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_bloodtype" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/dialog_blood_type" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
