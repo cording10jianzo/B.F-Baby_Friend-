@@ -1,5 +1,6 @@
 package com.example.coding10
 
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
@@ -14,11 +15,12 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.res.ResourcesCompat
 import com.example.coding10.databinding.ActivityDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-
+    private var isFavor = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -34,6 +36,15 @@ class DetailActivity : BaseActivity() {
         binding.detailPageTextNumber2.text = data?.aNumber
         binding.detailPageTextEmail2.text = data?.aEmail
         binding.detailPageTextMemo2.text = data?.aMemo
+        binding.detailChLike.isChecked = data?.favorite!!
+
+        //즐찾 클릭이벤트
+        binding.detailChLike.setOnCheckedChangeListener { buttonView, isChecked ->
+            isFavor = isChecked
+            if (isChecked) {
+                Snackbar.make(buttonView, "즐겨찾기 목록에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
+            }
+        }
 
         binding.detailPageButtonCall.setOnClickListener {
             val input = binding.detailPageTextNumber2.text.toString()
@@ -52,8 +63,13 @@ class DetailActivity : BaseActivity() {
         }
 
         binding.detailPageTopVector.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
+            var position: Int = -1
+            position = intent.getIntExtra("POS", -1)
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("POS", position)
+                putExtra("ISFAVOR", isFavor)
+            }
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }
 
