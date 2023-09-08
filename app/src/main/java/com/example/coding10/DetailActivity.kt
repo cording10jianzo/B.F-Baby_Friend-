@@ -71,7 +71,8 @@ class DetailActivity : BaseActivity() {
             notification()
         }
     }
-    private fun actionFinish(){
+
+    private fun actionFinish() {
         var position: Int = -1
         position = intent.getIntExtra("POS", -1)
         val intent = Intent(this, MainActivity::class.java).apply {
@@ -125,7 +126,6 @@ class DetailActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
         actionFinish()
     }
 }

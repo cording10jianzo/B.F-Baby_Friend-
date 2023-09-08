@@ -115,7 +115,7 @@ fun sortData(): List<CommonItems> {
 fun displayData(): List<CommonItems>  {
     val sortedList = sortData() //정렬
     var displayList = mutableListOf<CommonItems>()
-    val (favoriteItems, nonFavoriteItems) = sortedList.partition { (it as MainItems).favorite }
+    val (favoriteItems, nonFavoriteItems) = sortedList.partition {false}
     displayList.addAll(favoriteItems)
     var currentCategory = if (nonFavoriteItems.isNotEmpty()) (nonFavoriteItems[0] as MainItems).category else ""
     displayList.add(MainCategory(currentCategory))

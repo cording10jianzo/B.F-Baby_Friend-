@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
                     id: Long
                 ) {
 //                    Toast.makeText(this@MainActivity, "position 값 : $position", Toast.LENGTH_SHORT).show()
+                    (binding.mainViewPager.adapter as MainViewPagerAdapter).switchFragment(position)
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
