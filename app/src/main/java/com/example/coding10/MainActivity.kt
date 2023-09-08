@@ -2,14 +2,14 @@ package com.example.coding10
 
 import CustomDialog
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.result.ActivityResultLauncher
 import androidx.viewpager2.widget.ViewPager2
 import com.example.coding10.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.coroutines.NonCancellable.start
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +32,17 @@ class MainActivity : AppCompatActivity() {
             fabButton()
         }
 
+        binding.fabPlus.setOnClickListener {
+            CustomDialog(onSave = { item: MainItems ->
+                dataList.add(item)
+            }).show(supportFragmentManager, "")
+        }
+
+        binding.fabFind.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
         // spinner
         val spinnerData = arrayOf("List View", "Grid View")
         val adapter = ArrayAdapter(this, R.layout.spinner_custom_layout, spinnerData)
@@ -41,8 +52,17 @@ class MainActivity : AppCompatActivity() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> binding.mainFab.show()
-                    else -> binding.mainFab.hide()
+                    0 -> {
+                        binding.mainFab.show()
+                        binding.fabPlus.show()
+                        binding.fabFind.show()
+                    }
+
+                    else -> {
+                        binding.mainFab.hide()
+                        binding.fabPlus.hide()
+                        binding.fabFind.hide()
+                    }
                 }
             }
         })
@@ -56,20 +76,6 @@ class MainActivity : AppCompatActivity() {
             tab.setText(viewPagerAdapter.getTitle(position))
             tab.setIcon(viewPagerAdapter.getIcon(position))
         }.attach()
-
-        fabFind.setOnClickListener {
-
-            CustomDialog(onSave = { item: MainItems ->
-                dataList.add(item)
-            }).show(supportFragmentManager, "")
-
-        }
-
-        fabPlus.setOnClickListener{
-
-
-        }
-
     }
 
     //floating Action Button 메뉴 구현
@@ -81,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             ObjectAnimator.ofFloat(fabPlus, "translationY", 0f).apply { start() }
             mainFab.setImageResource(R.drawable.add)
 
-        // 플로팅 액션 버튼 열기 - 닫혀있는 플로팅 버튼 꺼내는 애니메이션 세팅
+            // 플로팅 액션 버튼 열기 - 닫혀있는 플로팅 버튼 꺼내는 애니메이션 세팅
         } else with(binding) {
             ObjectAnimator.ofFloat(fabFind, "translationY", -150f).apply { start() }
             ObjectAnimator.ofFloat(fabPlus, "translationY", -300f).apply { start() }
