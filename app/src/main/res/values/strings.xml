@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">coding10</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="my_page_blood_type_error">혈액형 입력 값을 확인해주세요.</string>
+    <string name="my_page_blood_text">BLOOD TYPE</string>
+    <string name="my_page_number_type_error">번호 입력 값을 확인해주세요.</string>
+    <string name="my_page_number_text">NUMBER</string>
+    <string name="my_page_email_type_error">이메일 입력 값을 확인해주세요.</string>
+    <string name="my_page_email_text">EMAIL</string>
+    <string name="my_page_memo_text">MEMO</string>
+    <string name="my_page_btn_edit">수정하기</string>
+    <string name="my_page_btn_cancel">취소</string>
+    <string name="my_page_btn_confirm">확인</string>
+    <string name="my_page_user_info_init_value">NAME : 에버렛 / AGE : 3</string>
+    <string name="my_page_user_blood_init_value">AB</string>
+    <string name="my_page_user_number_init_value">010-1234-5678</string>
+    <string name="my_page_user_email_init_value">sajdfik@gmail.com</string>
+    <string name="my_page_user_memo_init_value">나는 에버렛이에용</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
