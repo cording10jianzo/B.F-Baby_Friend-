@@ -67,6 +67,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/detail_page_main_layout" />
 
+            <CheckBox
+                android:id="@+id/detail_ch_like"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                android:button="@null"
+                android:background="@drawable/checked_like"
+                app:layout_constraintBottom_toBottomOf="@id/detail_page_main_image"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"/>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
