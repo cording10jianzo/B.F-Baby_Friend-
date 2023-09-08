@@ -1,10 +1,9 @@
-import android.app.Dialog
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.TimePickerDialog
+import android.app.PendingIntent
 import android.content.Context
-import android.content.Context.NOTIFICATION_SERVICE
-import android.graphics.drawable.Icon
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.PatternMatcher
@@ -15,18 +14,13 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.EditText
-import android.widget.TimePicker
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.android.contectapp.Notification
+import com.example.coding10.MainActivity
 import com.example.coding10.MainItems
 import com.example.coding10.R
-import com.example.coding10.databinding.ActivityMainBinding
 import com.example.coding10.databinding.DialogLayoutBinding
 import com.example.coding10.getUri
 import com.google.android.material.snackbar.Snackbar
@@ -35,7 +29,7 @@ import java.text.DateFormat
 import java.util.Calendar
 import java.util.regex.Pattern
 
-
+@SuppressLint("MissingInflatedId")
 class CustomDialog(
     //리스트에 추가해 줄 생성자
     val onSave: (item: MainItems) -> Unit
@@ -49,7 +43,8 @@ class CustomDialog(
     private val Notification: Notification by lazy {
         Notification(requireContext())
     }
-
+    private val channelId = "my_channel_id"
+    private val notificationId = 1
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -75,12 +70,61 @@ class CustomDialog(
         //Event 시간에 맞춰 Notification 표시
         binding.dialogNotification1.setOnClickListener {
 
-            val delayMillis = 500 * 600 * 1000L
-            val message = "5분 후 알림"
-            scheduleNotification(delayMillis, message)
+            createNotificationChannel()
+            val delayMillis: Long = 5000
+            val intent = Intent(context, MainActivity::class.java)
+            val pendingIntent =
+                PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+            // 5초 후에 알림 생성
+            binding.dialogNotification1.postDelayed({
+                val notificationBuilder =
+                    context?.let { it1 ->
+                        NotificationCompat.Builder(it1, channelId)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle("알림 제목")
+                            .setContentText("알림 내용")
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true)
+                    }
+
+                val notificationManager =
+                    context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                if (notificationBuilder != null) {
+                    notificationManager.notify(notificationId, notificationBuilder.build())
+                }
+
+                Toast.makeText(context, "5초 후에 알림이 표시됩니다.", Toast.LENGTH_SHORT).show()
+            }, delayMillis)
+
         }
         binding.dialogNotification2.setOnClickListener {
+            createNotificationChannel()
+            val delayMillis: Long = 10000
+            val intent = Intent(context, MainActivity::class.java)
+            val pendingIntent =
+                PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
+            // 10초 후에 알림 생성
+            binding.dialogNotification1.postDelayed({
+                val notificationBuilder =
+                    context?.let { it1 ->
+                        NotificationCompat.Builder(it1, channelId)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle("알림 제목")
+                            .setContentText("알림 내용")
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true)
+                    }
+
+                val notificationManager =
+                    context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                if (notificationBuilder != null) {
+                    notificationManager.notify(notificationId, notificationBuilder.build())
+                }
+
+                Toast.makeText(context, "5초 후에 알림이 표시됩니다.", Toast.LENGTH_SHORT).show()
+            }, delayMillis)
         }
 
 
@@ -329,6 +373,17 @@ class CustomDialog(
             else -> {
 
             }
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "My Channel"
+            val descriptionText = "My Notification Channel"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+
         }
     }
 }
