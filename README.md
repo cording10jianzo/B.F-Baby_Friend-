@@ -35,14 +35,14 @@
 <summary>와이어 프레임</summary>
   
 
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/44#issue-1888558016)
+![wireframe](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/248bf9cb-eca6-4d54-a505-0414a241e304)
 
 - 와이어 프레임은 회의를 통하여 구체적인 설계에 들어가기 전에 `대략적인 틀`을 구성했습니다.
 </details>
 <details>
  <summary>스플래쉬 페이지</summary>
 
- ![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/35#issue-1888556944)
+![splash1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/4f7b8af4-5917-47b5-bbb6-49cc5b617084)
 
  
  - 스플래시 페이지는 `lottie animation`이 들어간 페이지로 바로 메인 페이지로 이동합니다. 
@@ -51,38 +51,38 @@
 <details>
 <summary>메인 페이지</summary>
   
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/36#issue-1888557096)
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/37#issue-1888557142)
+![main1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/7298eae8-fbb7-4428-be56-f177f338c928)
+![main2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/81b9d957-1bf1-4fa6-9e47-bc49cee7b8c3)
 
 - 메인 페이지는 다른 페이지들과 상호작용하는 페이지이며 `view type 변환`, `my page 이동`, `fab을 활용한 다른 프레그먼트에 접근`하는 등 다양한 기능이 가능합니다.
 </details>
 <details>
 <summary>마이 페이지</summary>
   
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/38#issue-1888557193)
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/39#issue-1888557232)
+![my1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/d9bc1a9a-623b-4aa5-9a6c-d96f7a9a6f68)
+![my2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/a7ca2cd5-3afc-4b6e-97ed-7ae006feca15)
 
 - 마이 페이지는 `수정하기`를 통해서 개인의 정보수정이 가능합니다.
 </details>
 <details>
 <summary>상세 페이지</summary>
   
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/40#issue-1888557267)
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/41#issue-1888557305)
+![detail1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/8800406a-f9c4-44c3-bf50-9aaab5072c78)
+![detail2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/ae0ae2a9-f855-4f7a-960a-7274f4147596)
 
 - 상세 페이지는 클릭한 아이템의 `자세한 정보`확인이 가능합니다.
 </details>
 <details>
 <summary>친구찾기 페이지</summary>
   
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/42#issue-1888557344)
+![search1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/338e478a-ec33-4c80-8252-38d8f8d04e44)
 
 - 친구찾기 페이지에서는 존재하는 친구를 빠르게 찾아서 `상세 페이지`로 이동이 가능합니다.
 </details>
 <details>
 <summary>연락처 추가 페이지</summary>
   
-![image](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/43#issue-1888557382)
+![addcontact1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/3d359b6d-e242-4156-8c30-037444b1f072)
 
 - 연락처 추가 페이지는 다른 사람의 연락처를 `추가 후 저장`이 가능합니다.
 </details>
