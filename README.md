@@ -83,7 +83,7 @@
 <summary>연락처 추가 페이지</summary>
   
 ![addcontact1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/3d359b6d-e242-4156-8c30-037444b1f072)
-![addcontact2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/2814b30b-fc24-44bd-9b3a-f6ba79bcf7a9)
+![addcontact2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/02b4e77d-4523-4ae7-aadc-206b5d9b6dbb)
 
 - 연락처 추가 페이지는 다른 사람의 연락처를 `유효성 검사`를 하여 `추가 후 저장`이 가능합니다.
 </details>
