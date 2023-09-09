@@ -55,6 +55,31 @@
 ![main2](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/81b9d957-1bf1-4fa6-9e47-bc49cee7b8c3)
 
 - 메인 페이지는 다른 페이지들과 상호작용하는 페이지이며 `view type 변환`, `my page 이동`, `fab을 활용한 다른 프레그먼트에 접근`하는 등 다양한 기능이 가능합니다.
+- 리사이클러뷰 사용하여서 연락처 리스트 보여주기
+  - RecyclerView, Adapter, ViewHolder로 사진, 이름, 연락처, 좋아요 정보를 리스트 형태로 표시되도록 하였고 MainItems에 더미데이터를 추가하고 단말에서 사진을 가져오기 위해 getUri형태로 데이터를 변경하였으며 drawable을 URI로 바꾸는 코드를 사용하였습니다. 
+
+- `ItemViewType 변경` 적용
+  - MainFragmentRecyclerView Adapter의 getItemViewType 및 onCreateViewHolder에 이름의 자음 정보를 가진 category와 사용자 정보를 가진 item 뷰타입으로 분기하여 오버라이드하였습니다. 
+
+- `spinner` 상단 우측 버튼 클릭시 viewtype전환 (`리스트/그리드`)
+  - MainGridFragment, MainGridListAdapter, FragmentRecyclerView, 그리드 타입레이아웃,  MainGridListItemHelper를 생성하여 MainActivity에서 우측 상단 Sppiner를 생성하였을 때, 그리드뷰 타입으로 전환할 수 있도록 하였고, 클릭시 상세페이지로 넘어가기, 롱클릭시 삭제 기능, Swipe call 기능을 리스트타입과 마찬가지로 적용하였습니다. 
+
+- `Swipe-to-Action`
+  - 연락처 아이템을 스와이프할 때, 스와이프의 방향에 따라 특정 액션(메세지 또는 통화)을 실행
+MainListItemHelper class파일을 만들어 callback class를 상속받는 ItemTouchHelper class를 사용하여 오른쪽으로 스와이프 시 전화기 이미지가 보여지면서 call로 넘어가는 기능을 구현하였습니다.
+그리드뷰 타입에서도 기능구현이 되도록 MainGridListItemHelper class를 생성하였습니다.
+manifests CALL_PHONE permission과 메인프래그먼트 페이지requestPermissions(실시간 권한요청)하였습니다.  
+
+- 즐겨찾기 기능구현
+  - DetailFragment에서 Checkbox를 이용하여 즐겨찾기 아이콘을 클릭하였을 때 "즐겨찾기 목록에 추가되었다" actionbar를 띄우고 정보를 인텐트로 호출하여 MainFragment에 반영하도록 하였습니다.  
+
+- `리스트 정렬과 초성추출` & `StickyHeader` 기능 구현
+  - List sortBy함수로 연락처 목록을 이름순으로 정렬하고 Category로 쓰일 초성을 함수를 활용하여 추출하였습니다.
+ RecyclerView의 ItemDecoration상속받는 StickyHeaderItemDecoration Class를 만들어 StickyHeaderInterface로 Category를 Header로 사용하는 StickyHeader를 구현하였습니다.  
+
+- `롱클릭삭제` 
+  - 아이템 롱클릭시 "연락처 삭제" 다이얼로그를 띄우고 확인을 누르면 삭제할 수 있도록 하였습니다.
+  
 </details>
 <details>
 <summary>마이 페이지</summary>
