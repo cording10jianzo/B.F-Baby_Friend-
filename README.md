@@ -1,4 +1,4 @@
-![iamge](https://github.com/cording10jianzo/B.F-Baby_Friend-/issues/45#issue-1888570214)
+![homeimage](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/07ae2514-5217-4117-bf41-2058603648db)
 
 # :hatched_chick: Baby Friends :baby_chick:
 ### 자신의 아이를 소개하는 SNS인 Baby Friends
