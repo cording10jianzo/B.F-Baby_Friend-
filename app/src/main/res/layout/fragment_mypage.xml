@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:id="@+id/my_page_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_page_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/my_page_main_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mypage_baby1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/my_page_main_layout" />
+
+            <TextView
+                android:id="@+id/my_page_main_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_back_ground"
+                android:fontFamily="@font/font2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/my_page_user_info_init_value"
+                android:textColor="#3C1800"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/my_page_main_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/my_page_text_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_page_main_image">
+
+                <TextView
+                    android:id="@+id/my_page_edit_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:gravity="center"
+                    android:padding="13dp"
+                    android:text="@string/my_page_btn_edit"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintBottom_toTopOf="@id/my_page_text_blood"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/my_page_cancel_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="55dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/my_page_btn_cancel"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@id/my_page_text_blood"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/my_page_complete_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/text_button_bg"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="55dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/my_page_btn_confirm"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@id/my_page_text_blood"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/my_page_text_blood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/my_page_blood_text"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_edit_button"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/my_page_tv_blood_type_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/font2"
+                    android:text="@string/my_page_blood_type_error"
+                    android:textColor="@color/error"
+                    android:textSize="16sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_page_edit_button" />
+
+                <EditText
+                    android:id="@+id/my_page_et_blood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/my_page_user_blood_init_value"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_text_blood"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/blood"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_et_blood"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_text_blood" />
+
+                <TextView
+                    android:id="@+id/my_page_text_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="@string/my_page_number_text"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_et_blood"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <TextView
+                    android:id="@+id/my_page_tv_number_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:text="@string/my_page_number_type_error"
+                    android:textColor="@color/error"
+                    android:textSize="16sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_et_blood" />
+
+                <EditText
+                    android:id="@+id/my_page_et_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/my_page_user_number_init_value"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_text_number"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/phone"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_et_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_text_number" />
+
+                <TextView
+                    android:id="@+id/my_page_text_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="@string/my_page_email_text"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_et_number"
+                    tools:layout_editor_absoluteX="10dp" />
+
+
+                <TextView
+                    android:id="@+id/my_page_tv_email_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:fontFamily="@font/font2"
+                    android:text="@string/my_page_email_type_error"
+                    android:textColor="@color/error"
+                    android:textSize="16sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_et_number" />
+
+                <EditText
+                    android:id="@+id/my_page_et_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font2"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/my_page_user_email_init_value"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_text_email"
+                    tools:ignore="RtlSymmetry"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/email"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_et_email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_text_email" />
+
+                <TextView
+                    android:id="@+id/my_page_text_memo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font2"
+                    android:paddingHorizontal="30dp"
+                    android:text="@string/my_page_memo_text"
+                    android:textColor="@color/brown"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_et_email"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <EditText
+                    android:id="@+id/my_page_et_memo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font2"
+                    android:paddingStart="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/my_page_user_memo_init_value"
+                    android:textColor="@color/brown2"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_text_memo"
+                    tools:layout_editor_absoluteX="10dp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/note"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_et_memo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_text_memo" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

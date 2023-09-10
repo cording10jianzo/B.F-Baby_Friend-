@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+  >
+
+
+
+
+        <ImageView
+            android:id="@+id/dialog_iv"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/sun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/dialog_notification1"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_button_bg"
+            android:fontFamily="@font/font2"
+            android:gravity="center"
+            android:text="5분뒤 알림"
+            android:textColor="@color/brown"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toStartOf="@id/dialog_notification2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_iv" />
+
+        <TextView
+            android:id="@+id/dialog_notification2"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_button_bg"
+            android:fontFamily="@font/font2"
+            android:gravity="center"
+            android:text="10분뒤 알림"
+            android:textColor="@color/brown"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dialog_notification1"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_iv" />
+
+        <EditText
+            android:id="@+id/dialog_name"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/tertiary"
+            android:fontFamily="@font/font2"
+            android:hint="Name"
+            android:inputType="text"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_notification1" />
+
+        <TextView
+            android:id="@+id/dialog_name_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/font2"
+            android:text="2글자 이상의 이름을 입력해주세요."
+            android:textColor="@color/tertiary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/dialog_name"
+            app:layout_constraintTop_toBottomOf="@id/dialog_notification1" />
+
+        <EditText
+            android:id="@+id/dialog_number"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/brown2"
+            android:fontFamily="@font/font2"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_name" />
+
+        <TextView
+            android:id="@+id/dialog_number_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/font2"
+            android:text="@string/my_page_number_type_error"
+            android:textColor="@color/tertiary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/dialog_number"
+            app:layout_constraintTop_toBottomOf="@id/dialog_name" />
+
+        <EditText
+            android:id="@+id/dialog_email"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/tertiary"
+            android:fontFamily="@font/font2"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_number" />
+
+        <TextView
+            android:id="@+id/dialog_email_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/font2"
+            android:text="@string/my_page_email_type_error"
+            android:textColor="@color/tertiary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/dialog_email"
+            app:layout_constraintTop_toBottomOf="@id/dialog_number" />
+
+        <EditText
+            android:id="@+id/dialog_memo"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/brown2"
+            android:fontFamily="@font/font2"
+            android:hint="Memo"
+            android:inputType="text"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_email" />
+
+        <EditText
+            android:id="@+id/dialog_age"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/tertiary"
+            android:fontFamily="@font/font2"
+            android:hint="Age"
+            android:inputType="number"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_memo" />
+
+        <TextView
+            android:id="@+id/dialog_age_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/font2"
+            android:text="만 7세 이하만 가입이 가능합니다."
+            android:textColor="@color/tertiary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/dialog_age"
+            app:layout_constraintTop_toBottomOf="@id/dialog_memo" />
+
+        <EditText
+            android:id="@+id/dialog_blood_type"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/brown2"
+            android:fontFamily="@font/font2"
+            android:hint="BloodType"
+            android:inputType="text"
+            android:textColor="@color/brown"
+            android:textColorHighlight="@color/secondary"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_age" />
+
+        <TextView
+            android:id="@+id/dialog_blood_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/font2"
+            android:text="@string/my_page_blood_type_error"
+            android:textColor="@color/tertiary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/dialog_blood_type"
+            app:layout_constraintTop_toBottomOf="@id/dialog_age" />
+
+        <TextView
+            android:id="@+id/dialog_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_button_bg"
+            android:fontFamily="@font/font2"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Cancel"
+            android:textColor="@color/brown"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toStartOf="@id/dialog_save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_blood_type" />
+
+        <TextView
+            android:id="@+id/dialog_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/text_button_bg"
+            android:fontFamily="@font/font2"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Save"
+            android:textColor="@color/brown"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialog_cancel"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_blood_type" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
