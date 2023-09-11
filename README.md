@@ -42,8 +42,7 @@
 <details>
  <summary>스플래쉬 페이지</summary>
 
-![splash1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/4f7b8af4-5917-47b5-bbb6-49cc5b617084)
-
+![splash1](https://github.com/cording10jianzo/B.F-Baby_Friend-/assets/88123219/5e612302-0ff8-4c96-84b1-3af4d98d1615)
  
  - 스플래시 페이지는 `lottie animation`이 들어간 페이지로 바로 메인 페이지로 이동합니다. 
   
